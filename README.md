@@ -1,7 +1,7 @@
 Genotype-ID
 ===========
 
-The idea of creating a Shiny server to develop population genetic tool ocurred to us while working on [poppr] (https://github.com/poppr/poppr) on the winter of 2013.
+Creation of a Shiny server to develop population genetic tool ocurred to us while working on [poppr] (https://github.com/poppr/poppr) on the winter of 2013.
 
 The goals of the Genotype-ID are
 * To create an easy framework for the reconstruction and identification on SSR data
