@@ -89,7 +89,7 @@
     	</div>
     	</div>
     	<div id="plot" class="shiny-plot-output shiny-bound-output" style="width: 100% ; height: 900px">
-		<div class="span8 offset1">
+		<div class="span9 offset1">
 		<h4>Analysis</h4>
 		<p>Select between a Distance tree with bootstrap support values or a Minimum spanning network</p>
 		<div class="tabbable">
@@ -105,22 +105,24 @@
 			<div class="tab-pane active" title="Bootstrap Tree" id="tab-8923-1">
 					<h2>Tree Parameters</h2>
 					<form id="form" class="well">
+					<div class="control-group span3">		
 					<label class="control-label" for="tree">Choose a tree algorithm:</label>
-					<select id="tree">
+					<select id="tree" style="width:100px">
 						<option value="nj">nj</option>
 						<option value="upgma" selected="selected">upgma</option>
 					</select>
-						<div class="control-group">
+					</div>
+						<div class="control-group span4">
 					<label class="control-label">Number of bootstrap replicates</label>     
 							<div class="controls">
-							<input id="boot" name="boot" type="number" value="100" min="10" max="2000">
+							<input id="boot" name="boot" type="number" value="100" min="10" max="2000" style="width:100px">
 							</div>
 						</div>
 					<span class="help-block" style="color:green">Note: The tree display might take a while, be patient</span>
-					<div class="control-group">
+					<div class="control-group span2">
 						<button type="submit" class="btn btn-success" data-loading-text="Calculating...">Calculate Tree</button>
 					</div>
-					<div class="btn-group">
+					<div class="btn-group span3">
 					    <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
 					    Download
 					    <span class="caret"></span>
@@ -129,7 +131,9 @@
 					   	 <a id="downloadData" class="shiny-download-link" href="" target="_blank">NEWICK Tree</a>
 					   	 <a id="downloadData"  href="" target="_blank">PDF Tree</a>
 					    </ul>
-				    </div>					
+				    </div>
+				    <br>	
+				    <br>					
 					</form>
 				<!/div>	
 				<div data-display-if="$('html').hasClass('shiny-busy')"> 			
