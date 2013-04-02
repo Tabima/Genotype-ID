@@ -1,7 +1,7 @@
 Genotype-ID
 ===========
 
-The idea of creating a Shiny server to develop population genetic tool ocurred to us while working on [poppr] (http://github.com/poppr/poppr) on the winter of 2013.
+The idea of creating a Shiny server to develop population genetic tool ocurred to us while working on [poppr] (https://github.com/poppr/poppr) on the winter of 2013.
 
 The goals of the Genotype-ID are
 * To create an easy framework for the reconstruction and identification on SSR data
@@ -19,5 +19,26 @@ Installation
 
 **Genotype-ID** is based on R, it uses:
 * The latest [R](http://cran.r-project.org/) version (Version 2.15.3 is currently supported)
-* [poppr] (https://github.com/poppr/poppr) package 
+* [poppr] (https://github.com/poppr/poppr) package and its dependencies
 * [Shiny server] (https://github.com/rstudio/shiny-server) and its dependencies
+
+After installing the requirements, be sure that you have a folder named **shiny-server** on ``/var/``. Download the files into ``/var/shiny-server/`` using ``git pull``:
+
+``$ git pull https://github.com/Tabima/Genotype-ID/``
+
+After downloading the files, start the shiny-server
+
+``$ sudo shiny-server &``
+
+App Deployment
+-----------------------
+
+And go to your preferred browser (Genotype-ID is known to have issues with Internet Explorer, so we recommend using [Google Chrome](https://www.google.com/intl/es/chrome/browser/?hl=es) or, better yet, [Firefox](http://www.mozilla.org/en-US/firefox/new/#download-fx)) and go to the server port address:
+
+``http://localhost:3838/``
+
+The browser will show you a link to a folder called "Genotype-ID/", if you click on it, the application will deploy on shiny server and voila! there is your web-app.
+
+
+
+
