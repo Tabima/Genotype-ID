@@ -19,7 +19,10 @@ output$distPlotTree <- renderPlot({
   df.m <- as.data.frame(df.m)
   gen <- df2genind(df.m[, -c(1,2)], ploid=2, sep="/", pop=df.m[, 2], ind.names=df.m[, 1])
   if (input$boot > 1000){
-    return("No Plots Allowed.")
+    plot(c(0,1),c(0,1),ann=F,bty='n',type='n',xaxt='n',yaxt='n') + rect(0,1,1,0.8,col="indianred2",border='transparent' ) + text(x=0.5, y=0.9, "The number of bootstrap repetitions should be less or equal to 1000",cex=1.4, col="white")
+  }
+  else if (input$boot < 10){
+    plot(c(0,1),c(0,1),ann=F,bty='n',type='n',xaxt='n',yaxt='n') + rect(0,1,1,0.8,col="indianred2",border='transparent' ) + text(x=0.5, y=0.9, "The number of bootstrap repetitions should be greater than 10",cex=1.4, col="white")
   }
   else{
   a<-bruvo.boot(gen, sample=input$boot, tree=input$tree)

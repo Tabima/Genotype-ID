@@ -137,7 +137,7 @@
 					</form>
 				<!/div>	
 				<div data-display-if="$('html').hasClass('shiny-busy')"> 			
-					<div class="span6 offset1">
+					<div class="span9 offset1">
 					<br>
 					<h4>Processing, please wait.</h4>   
 					<div class="progress progress-striped active">
