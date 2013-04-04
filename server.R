@@ -1,6 +1,6 @@
 library(shiny)
 library(poppr)
-df<-read.table("/var/shiny-server/www/p_ramorum/reduced_database.txt.csv", header=TRUE, sep="\t")
+df<-read.table("reduced_database.txt.csv", header=TRUE, sep="\t")
 df.m<-as.matrix(df)
 newrow<-c()
 
