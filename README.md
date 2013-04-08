@@ -19,7 +19,8 @@ Installation
 
 **Genotype-ID** is based on R, it uses:
 * The latest [R](http://cran.r-project.org/) version (Version 2.15.3 is currently supported)
-* [poppr] (https://github.com/poppr/poppr) package and its dependencies
+* [poppr] (https://github.com/poppr/poppr) package and its dependencies. 
+  ***Note:*** Right now, poppr must be in bleeding edge version for the NJ to work. In this case, refer to [poppr manual](http://grunwaldlab.cgrb.oregonstate.edu/primer-population-genetic-analyses-r/installation) to install it. 
 * [Shiny server] (https://github.com/rstudio/shiny-server) and its dependencies
 
 After installing the requirements, be sure that you have a folder named **shiny-server** on ``/var/``. Download the files into ``/var/shiny-server/`` using ``git pull``:
