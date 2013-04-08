@@ -33,7 +33,8 @@ output$distPlotTree <- renderPlot({
   
   #Running the tree, setting a cutoff of 50 and saving it into a variable to be plotted (a)
   if (input$tree=="nj"){
-    
+   a <- poppr:::genoid.bruvo.boot(gen, sample=input$boot, tree=input$tree, cutoff=50)
+   a <- midpoint(ladderize(a))
   }
   else {
     a <- bruvo.boot(gen, sample=input$boot, tree=input$tree, cutoff=50)
