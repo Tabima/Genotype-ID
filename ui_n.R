@@ -15,9 +15,10 @@ shinyUI(pageWithSidebar(
                    textInput("mst8","","100/100"),
                    textInput("mst9","","100/100")
                    ,
-                   submitButton("Calculate Tree")),
+                   submitButton("Calculate Tree"),
+                   downloadButton('downloadData', 'Download NEWICK Tree')
+  ),
   mainPanel(
-    tableOutput("table"),
-    plotOutput("plot")
+    plotOutput("distPlotTree")
     )
 ))
