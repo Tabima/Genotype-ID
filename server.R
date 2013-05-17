@@ -55,7 +55,7 @@ shinyServer(function(input, output) {
     if (input$tree=="upgma"){
       axisPhylo(3)
     }
-    else if (tree == "nj"){
+    else if (input$tree == "nj"){
       add.scale.bar(x=0.89,y=1.18,length=0.05,lwd=2)
     }
     }
