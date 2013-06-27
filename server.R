@@ -7,6 +7,7 @@ msn.plot <- NULL
 a <- NULL
 gen <- NULL
 random.sample <- 1
+ssr <- c(PrMS6 = 3, PR9C3 = 2, PrMS39 = 2, PrMS45 = 4, PrMS43 = 4, KIPrMS18 = 2, KIPrMS64 = 2, KIPrMS82a = 2, KIPrMS82b = 2)
 
 shinyServer(function(input, output) {
  
@@ -38,7 +39,7 @@ shinyServer(function(input, output) {
     gen$other$tipcolor <<- as.character(gen$other$tipcolor)
       #Running the tree, setting a cutoff of 50 and saving it into a variable to be plotted (a)
     if (input$tree=="nj"){
-     a <<- poppr:::genoid.bruvo.boot(gen, sample=input$boot, tree=input$tree, cutoff=50)
+     a <<- poppr:::genoid.bruvo.boot(gen, replen = ssr, sample=input$boot, tree=input$tree, cutoff=50)
      a <<- midpoint(ladderize(a))
     }
     else {
@@ -67,7 +68,7 @@ shinyServer(function(input, output) {
     df.m <- rbind(df.m,newrow,deparse.level=0)
     df.m <- as.data.frame(df.m)
     gen <- df2genind(df.m[, -c(1,2)], ploid=2, sep="/", pop=df.m[, 2], ind.names=df.m[, 1])
-    msn.plot <<- bruvo.msn(gen)
+    msn.plot <<- bruvo.msn(gen, replen = ssr)
     V(msn.plot$graph)$size <<- 10
     #x <<- sample(10000, 1)
     x <<- 200
