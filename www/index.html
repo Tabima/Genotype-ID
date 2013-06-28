@@ -56,33 +56,18 @@
 <div class="row-fluid">
 		<div class="span12">
 		<h3>Upload genotypes and select analysis</h3>
-		<p>Using the left panel, input the allele at each locus and select either a distance tree with bootstrap support values or a minimum spanning network.</p>
-		<p>Both of these methods use Bruvo's Distance, as implemented in the R package poppr</p>		
+		<p>Separate alleles using a slash (Allele1/Allele2/Allele3/Allele4/Allele5)</p>
+		<p>Copy and paste your matrix using <a href="./SSR_Example_Data_parasitica.xlsx" target="_blank">this file</a> as template. Remember, <b>do not include the header and separate alleles using a slash (Allele1/Allele2/Allele3)</p></p>
+		<p style="color:blue"><b>Warning:</b> All genotypes must have <b>5</b> alleles, if you have diploid data, add extra "/0" at the end until you completed the ploidy levels..</p>
 		<hr>
 		</div>
-		<div class="span2">		
+		<div class="span11">		
 		<h4>SSR loci</h4>
 		<p>Separate alleles using a forward slash (Allele1/Allele2)</p>
 		<div class="control">		    
 		    <form class="well">
-		    <label style="align:center">D13</label>
-		    <input id="mst1" name="mst1" type="text" class="shiny-bound-input" maxlength="7" style="width:80px" placeholder="000/000">
-			 <label>Pi4B</label>		    
-		    <input id="mst2" name="mst2" type="text" class="shiny-bound-input" maxlength="7" style="width:80px;" placeholder="000/000">
-			 <label>G11</label>	
-		    <input id="mst3" name="mst3" type="text" class="shiny-bound-input" maxlength="7" style="width:80px;" placeholder="000/000">
-			 <label>Pi04</label>	
-			 <input id="mst4" name="mst4" type="text" class="shiny-bound-input" maxlength="7" style="width:80px;" placeholder="000/000">
-			 <label>Pi63</label>	
-		    <input id="mst5" name="mst5" type="text" class="shiny-bound-input" maxlength="7" style="width:80px;" placeholder="000/000">
-			 <label>Pi70</label>			    
-		    <input id="mst6" name="mst6" type="text" class="shiny-bound-input" maxlength="7" style="width:80px;" placeholder="000/000">
-			 <label>SSR2</label>			    
-		    <input id="mst7" name="mst7" type="text" class="shiny-bound-input" maxlength="7" style="width:80px;" placeholder="000/000">
-			 <label>Pi02/SSR3</label>			    
-		    <input id="mst8" name="mst8" type="text" class="shiny-bound-input" maxlength="7" style="width:80px;" placeholder="000/000">
-			 <label>SSR4</label>			    
-		    <input id="mst9" name="mst9" type="text" class="shiny-bound-input" maxlength="7" style="width:80px;" placeholder="000/000">
+		    <label style="align:center">Text Input</label>
+		    <textarea id="table" name="table" class="shiny-bound-input" cols="25" rows="7" style="width: 100%"></textarea> 
 		    <br>
 		    <button type="submit" class="btn btn-success">Submit genotype</button>
     		</form>
