@@ -56,7 +56,7 @@ shinyServer(function(input, output) {
     #Drawing the tree
     plot(a)
     #Adding the tip lables from each population, and with the already defined colors
-    tiplabels(pop(gen), adj=c(-4, 0.5), frame="n", col=gen$other$tipcolor, cex=0.8, font=2)
+    #tiplabels(pop(gen), adj=c(-4, 0.5), frame="n", col=gen$other$tipcolor, cex=0.8, font=2)
     
     #Adding the nodel labels: Bootstrap values.
     nodelabels(a$node.label, adj = c(1.2,-0.5), frame="n", cex=0.9, font=3)
