@@ -12,11 +12,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="stylesheet" type="text/css" href="shared/bootstrap/css/bootstrap-responsive.min.css"/>
   <title>Geno-ID Shiny module</title>
+
+<script>if (typeof(Shiny) != "undefined") {
+  Shiny.createSocket = function() {return new SockJS(location.pathname + "__sockjs__",null,{});};
+  Shiny.oncustommessage = function(message) {
+    if (typeof message === "string") alert(message);
+    if (message.alert) alert(message.alert);
+    if (message.console && console.log) console.log(message.console);
+  };
+}</script-->
   
   <title>Phytophthora ID: Genotype-ID (SSR identification for strains of <em>P. infestans</em> and <em>P. ramorum</em>)</title>
 </head>
-
 <body>
+
+
 <div class="row-fluid">
 		<div class="span12">
 		<h3>Upload genotypes and select analysis</h3>
@@ -110,8 +120,20 @@
 	</div-->
 </div>
 </div>
-
-	<script src="http://twitter.github.com/bootstrap/assets/js/jquery.js"></script>
+<!--script src="shared/jquery.js" type="text/javascript"></script>
+<script src="shared/shiny.js" type="text/javascript"></script>
+<script src="shared/slider/js/jquery.slider.min.js"></script>
+<script src="http://cdn.sockjs.org/sockjs-0.3.min.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-button.js"></script>
+<script>if (typeof(Shiny) != "undefined") {
+Shiny.createSocket = function() {return new SockJS(location.pathname + "__sockjs__",null,{});};
+Shiny.oncustommessage = function(message) {
+	if (typeof message === "string") alert(message);
+	if (message.alert) alert(message.alert);
+	if (message.console && console.log) console.log(message.console);
+};
+}</script>
+<script src="http://twitter.github.com/bootstrap/assets/js/jquery.js"></script>
 	<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-transition.js"></script>
 	<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-alert.js"></script>
 	<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-modal.js"></script>
