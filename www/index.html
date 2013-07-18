@@ -12,16 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="stylesheet" type="text/css" href="shared/bootstrap/css/bootstrap-responsive.min.css"/>
   <title>Geno-ID Shiny module</title>
-
-<script>if (typeof(Shiny) != "undefined") {
-  Shiny.createSocket = function() {return new SockJS(location.pathname + "__sockjs__",null,{});};
-  Shiny.oncustommessage = function(message) {
-    if (typeof message === "string") alert(message);
-    if (message.alert) alert(message.alert);
-    if (message.console && console.log) console.log(message.console);
-  };
-}</script-->
-  
+ 
   <title>Phytophthora ID: Genotype-ID (SSR identification for strains of <em>P. infestans</em> and <em>P. ramorum</em>)</title>
 </head>
 <body>
