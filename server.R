@@ -8,7 +8,7 @@ p <- NULL
 a <- NULL
 gen <- NULL
 random.sample <- 1
-ssr <- c(PrMS6 = 3, PR9C3 = 2, PrMS39 = 2, PrMS45 = 4, PrMS43 = 4, KIPrMS18 = 2, KIPrMS64 = 2, KIPrMS82a = 2, KIPrMS82b = 2)
+ssr <- c(PrMS6 = 3, PRMS9c3 = 2, PrMS39a = 2, PrMS45 = 4, PrMS43ab = 4, KI18 = 2, KI64 = 2, ILVOPrMS131 = 2)
 
 shinyServer(function(input, output) {
  
@@ -33,7 +33,7 @@ shinyServer(function(input, output) {
     colnames(t)<-colnames(df.m)
     df.m <- rbind(df.m,t,deparse.level=0)
     df.m <- as.data.frame(df.m)
-    gen <<- df2genind(df.m[, -c(1,2)], ploid=5, sep="/", pop=df.m[, 2], ind.names=df.m[, 1])
+    gen <<- df2genind(df.m[, -c(1,2)], ploid=2, sep="/", pop=df.m[, 2], ind.names=df.m[, 1])
     if (input$boot > 1000){
       plot(c(0,1),c(0,1),ann=F,bty='n',type='n',xaxt='n',yaxt='n') + rect(0,1,1,0.8,col="indianred2",border='transparent' ) + text(x=0.5, y=0.9, "The number of bootstrap repetitions should be less or equal to 2000",cex=1.6, col="white")
     }
@@ -56,7 +56,7 @@ shinyServer(function(input, output) {
     #Drawing the tree
     plot(a)
     #Adding the tip lables from each population, and with the already defined colors
-    #tiplabels(pop(gen), adj=c(-4, 0.5), frame="n", col=gen$other$tipcolor, cex=0.8, font=2)
+    tiplabels(pop(gen), adj=c(-4, 0.5), frame="n", col=gen$other$tipcolor, cex=0.8, font=2)
     
     #Adding the nodel labels: Bootstrap values.
     nodelabels(a$node.label, adj = c(1.2,-0.5), frame="n", cex=0.9, font=3)
@@ -81,7 +81,7 @@ shinyServer(function(input, output) {
     colnames(t)<-colnames(df.m)
     df.m <- rbind(df.m,t,deparse.level=0)
     df.m <- as.data.frame(df.m)
-    gen <<- df2genind(df.m[, -c(1,2)], ploid=5, sep="/", pop=df.m[, 2], ind.names=df.m[, 1])
+    gen <<- df2genind(df.m[, -c(1,2)], ploid=2, sep="/", pop=df.m[, 2], ind.names=df.m[, 1])
     msn.plot <<- bruvo.msn(gen, replen = ssr)
     V(msn.plot$graph)$size <<- 10
     #x <<- sample(10000, 1)
