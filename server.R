@@ -21,53 +21,55 @@ shinyServer(function(input, output) {
 
   output$distPlotTree <- renderPlot({
     #newrow <<- c("query","???",input$mst1,input$mst2,input$mst3,input$mst4,input$mst5,input$mst6,input$mst7,input$mst8,input$mst9)
-    if (any(is.na(newrow))){
+    if (length(newrow) < 1){
       plot(c(0,1),c(0,1),ann=F,bty='n',type='n',xaxt='n',yaxt='n') + rect(0,1,1,0.8,col="indianred2",border='transparent' ) + text(x=0.5, y=0.9, "No SSR data has been input.",cex=1.6, col="white")
     }
-    p <- c(input$table)
-    b<-unlist(strsplit(p,c("\n")))
-    b<-sub(" ","\t",b)
-    b<-strsplit(b,c("\t"))
-    t<-t(as.data.frame(b))
-    rownames(t)<-NULL
-    colnames(t)<-colnames(df.m)
-    df.m <- rbind(df.m,t,deparse.level=0)
-    df.m <- as.data.frame(df.m)
-    gen <<- df2genind(df.m[, -c(1,2)], ploid=2, sep="/", pop=df.m[, 2], ind.names=df.m[, 1])
-    if (input$boot > 1000){
-      plot(c(0,1),c(0,1),ann=F,bty='n',type='n',xaxt='n',yaxt='n') + rect(0,1,1,0.8,col="indianred2",border='transparent' ) + text(x=0.5, y=0.9, "The number of bootstrap repetitions should be less or equal to 2000",cex=1.6, col="white")
-    }
-    else if (input$boot < 10){
-      plot(c(0,1),c(0,1),ann=F,bty='n',type='n',xaxt='n',yaxt='n') + rect(0,1,1,0.8,col="indianred2",border='transparent' ) + text(x=0.5, y=0.9, "The number of bootstrap repetitions should be greater than 10",cex=1.6, col="white")
-    }
     else{
-    #Adding colors to the tip values according to the clonal lineage
-    gen$other$tipcolor <<- pop(gen)
-    levels(gen$other$tipcolor) <<- c("blue","darkcyan","darkolivegreen","darkgoldenrod","red")
-    gen$other$tipcolor <<- as.character(gen$other$tipcolor)
-      #Running the tree, setting a cutoff of 50 and saving it into a variable to be plotted (a)
-    if (input$tree=="nj"){
-     a <<- poppr:::genoid.bruvo.boot(gen, replen = ssr, sample=input$boot, tree=input$tree, cutoff=50)
-     a <<- midpoint(ladderize(a))
-    }
-    else {
-      a <<- bruvo.boot(gen, sample=input$boot, tree=input$tree, cutoff=50)
-    }
-    #Drawing the tree
-    plot(a)
-    #Adding the tip lables from each population, and with the already defined colors
-    tiplabels(pop(gen), adj=c(-4, 0.5), frame="n", col=gen$other$tipcolor, cex=0.8, font=2)
-    
-    #Adding the nodel labels: Bootstrap values.
-    nodelabels(a$node.label, adj = c(1.2,-0.5), frame="n", cex=0.9, font=3)
-    
-    if (input$tree=="upgma"){
-      axisPhylo(3)
-    }
-    else if (input$tree == "nj"){
-      add.scale.bar(x=0.89,y=1.18,length=0.05,lwd=2)
-    }
-    }
+      p <- c(input$table)
+      b<-unlist(strsplit(p,c("\n")))
+      b<-sub(" ","\t",b)
+      b<-strsplit(b,c("\t"))
+      t<-t(as.data.frame(b))
+      rownames(t)<-NULL
+      colnames(t)<-colnames(df.m)
+      df.m <- rbind(df.m,t,deparse.level=0)
+      df.m <- as.data.frame(df.m)
+      gen <<- df2genind(df.m[, -c(1,2)], ploid=2, sep="/", pop=df.m[, 2], ind.names=df.m[, 1])
+      if (input$boot > 1000){
+        plot(c(0,1),c(0,1),ann=F,bty='n',type='n',xaxt='n',yaxt='n') + rect(0,1,1,0.8,col="indianred2",border='transparent' ) + text(x=0.5, y=0.9, "The number of bootstrap repetitions should be less or equal to 2000",cex=1.6, col="white")
+      }
+      else if (input$boot < 10){
+        plot(c(0,1),c(0,1),ann=F,bty='n',type='n',xaxt='n',yaxt='n') + rect(0,1,1,0.8,col="indianred2",border='transparent' ) + text(x=0.5, y=0.9, "The number of bootstrap repetitions should be greater than 10",cex=1.6, col="white")
+      }
+      else{
+       #Adding colors to the tip values according to the clonal lineage
+       gen$other$tipcolor <<- pop(gen)
+       levels(gen$other$tipcolor) <<- c("blue","darkcyan","darkolivegreen","darkgoldenrod","red")
+       gen$other$tipcolor <<- as.character(gen$other$tipcolor)
+         #Running the tree, setting a cutoff of 50 and saving it into a variable to be plotted (a)
+       if (input$tree=="nj"){
+        a <<- poppr:::genoid.bruvo.boot(gen, replen = ssr, sample=input$boot, tree=input$tree, cutoff=50)
+        a <<- midpoint(ladderize(a))
+       }
+       else {
+         a <<- bruvo.boot(gen, sample=input$boot, tree=input$tree, cutoff=50)
+       }
+       #Drawing the tree
+       plot(a)
+       #Adding the tip lables from each population, and with the already defined colors
+       tiplabels(pop(gen), adj=c(-4, 0.5), frame="n", col=gen$other$tipcolor, cex=0.8, font=2)
+       
+       #Adding the nodel labels: Bootstrap values.
+       nodelabels(a$node.label, adj = c(1.2,-0.5), frame="n", cex=0.9, font=3)
+       
+       if (input$tree=="upgma"){
+         axisPhylo(3)
+       }
+       else if (input$tree == "nj"){
+         add.scale.bar(x=0.89,y=1.18,length=0.05,lwd=2)
+       }
+     }
+   }
   })
   
 #Minimum Spanning Network
