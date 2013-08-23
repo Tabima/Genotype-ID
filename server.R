@@ -6,6 +6,7 @@ df <- read.table("reduced_database.txt.csv", header = TRUE, sep = "\t")
 df.m <- as.matrix(df)
 #newrow <- c()
 msn.plot <- NULL
+labs <- NULL
 p <- NULL
 a <- NULL
 gen <- NULL
@@ -112,6 +113,7 @@ shinyServer(function(input, output) {
 	    # Remove all of the labels that don't match the input genotypes and replace the original "MLG" names.
 	    labs[which(!labs %in% gen.input)] <- NA
 	    labs[!is.na(labs)] <- combined_names
+	    labs <<- labs
 
 	    #x <<- sample(10000, 1)
 	    x <<- 200
@@ -147,7 +149,7 @@ shinyServer(function(input, output) {
     content = function(file) {
     pdf(file)
     set.seed(x)
-    plot.igraph(msn.plot$graph, vertex.label = NA)
+    plot.igraph(msn.plot$graph, , vertex.label = labs, vertex.label.font = 2, vertex.label.dist = 0.5, vertex.label.color = "firebrick")
     legend("topleft" , bty = "n", cex = 1.2, legend = msn.plot$populations, title = "Populations", fill = msn.plot$color, border = NULL)
     dev.off()
   }
