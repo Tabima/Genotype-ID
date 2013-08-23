@@ -46,7 +46,7 @@ shinyServer(function(input, output) {
       else{
        #Adding colors to the tip values according to the clonal lineage
        gen$other$tipcolor <<- pop(gen)
-       levels(gen$other$tipcolor) <<- c("blue","darkcyan","darkolivegreen","darkgoldenrod","red")
+       levels(gen$other$tipcolor) <<- c("blue","darkcyan","darkolivegreen","darkgoldenrod","red", heat.colors(length(levels(gen$other$tipcolor)) - 4))
        gen$other$tipcolor <<- as.character(gen$other$tipcolor)
          #Running the tree, setting a cutoff of 50 and saving it into a variable to be plotted (a)
        if (input$tree=="nj"){
